@@ -10,7 +10,7 @@
  * Description: singly linked lst node structure
  * for Holberton project
  */
-typedef struct listinti_s
+typedef struct listint_s
 {
 	int n;
 	struct listint_s *next;
