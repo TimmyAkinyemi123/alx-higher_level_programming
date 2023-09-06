@@ -1,29 +1,25 @@
-0x06. Python - Classes and Objects
+0x08. Python - More Classes and Objects
 Python
 OOP
  By: Guillaume
  Weight: 1
- Project will start Aug 29, 2023 6:00 AM, must end by Aug 30, 2023 6:00 AM
- Checker was released at Aug 29, 2023 12:00 PM
+ Ongoing second chance project - started Sep 4, 2023 6:00 AM, must end by Sep 7, 2023 6:00 AM
  An auto review will be launched at the deadline
-
-
-Background Context
-OOP is a totally new concept for all of you (especially those who think they know about it :)). It’s VERY important that you read at least all the material that is listed bellow (and skip what we recommend you to skip, you will see them later in the curriculum).
-
-As usual, make sure you type (never copy and paste), test, understand all examples shown in the following links (including those in the video), test again etc. The biggest and most important takeaway of this project is: experiment by yourself OOP, play with it!
-
-Read or watch the below resources in the order presented.
-
+In a nutshell…
+Auto QA review: 0.0/106 mandatory & 0.0/15 optional
+Altogether:  0.0%
+Mandatory: 0.0%
+Optional: 0.0%
+Calculation:  0.0% + (0.0% * 0.0%)  == 0.0%
 Resources
 Read or watch:
 
-Object Oriented Programming (Read everything until the paragraph “Inheritance” excluded. You do NOT have to learn about class attributes, classmethod and staticmethod yet)
-Object-Oriented Programming (Please *be careful*: in most of the following paragraphs, the author shows things the way you should not use or write a class in order to help you better understand some concepts and how everything works in Python 3. Make sure you read everything in the following paragraphs: General Introduction, First-class Everything, A Minimal Class in Python, Attributes (You DON’T have to learn about class attributes), Methods, The __init__ Method, “Data Abstraction, Data Encapsulation, and Information Hiding,” “Public, Protected, and Private Attributes”)
-Properties vs. Getters and Setters
-Learn to Program 9 : Object Oriented Programming
-Python Classes and Objects
-Object Oriented Programming
+Object Oriented Programming (Read everything until the paragraph “Inheritance” (excluded))
+Object-Oriented Programming (Please be careful: in most of the following paragraphs, the author shows the way you should not use or write a class, in order to help you better understand some concepts and how everything works in Python 3. Make sure you read only the following paragraphs: “General Introduction,” “First-class Everything,” “A Minimal Class in Python,” “Attributes,” “Methods,” “The __init__ Method,” “Data Abstraction, Data Encapsulation, and Information Hiding,” “__str__- and __repr__-Methods,” “Public- Protected- and Private Attributes,” & “Destructor”)
+Class and Instance Attributes
+classmethods and staticmethods
+Properties vs. Getters and Setters (Mainly the last part “Public instead of Private Attributes”)
+str vs repr
 Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
@@ -43,9 +39,15 @@ What is Data Abstraction, Data Encapsulation, and Information Hiding
 What is a property
 What is the difference between an attribute and a property in Python
 What is the Pythonic way to write getters and setters in Python
+What are the special __str__ and __repr__ methods and how to use them
+What is the difference between __str__ and __repr__
+What is a class attribute
+What is the difference between a object attribute and a class attribute
+What is a class method
+What is a static method
 How to dynamically create arbitrary new attributes for existing instances of a class
 How to bind attributes to object and classes
-What is the __dict__ of a class and/or instance of a class and what does it contain
+What is and what does contain __dict__ of a class and of an instance of a class
 How does Python find the attributes of an object or class
 How to use the getattr function
 Copyright - Plagiarism
@@ -63,559 +65,641 @@ A README.md file, at the root of the folder of the project, is mandatory
 Your code should use the pycodestyle (version 2.8.*)
 All your files must be executable
 The length of your files will be tested using wc
-All your modules should have a documentation (python3 -c 'print(__import__("my_module").__doc__)')
-All your classes should have a documentation (python3 -c 'print(__import__("my_module").MyClass.__doc__)')
-All your functions (inside and outside a class) should have a documentation (python3 -c 'print(__import__("my_module").my_function.__doc__)' and python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)')
-A documentation is not a simple word, it’s a real sentence explaining what’s the purpose of the module, class or method (the length of it will be verified)
-More Info
-Documentation is now mandatory! Each module, class, and method must contain docstring as comments. Example Google Style Python Docstrings
-
 Quiz questions
 Great! You've completed the quiz successfully! Keep going! (Show quiz)
 Tasks
-0. My first square
+0. Simple rectangle
 mandatory
-Write an empty class Square that defines a square:
+Score: 0.0% (Checks completed: 0.0%)
+Write an empty class Rectangle that defines a rectangle:
 
 You are not allowed to import any module
-guillaume@ubuntu:~/0x06$ cat 0-main.py
+guillaume@ubuntu:~/0x08$ cat 0-main.py
 #!/usr/bin/python3
-Square = __import__('0-square').Square
+Rectangle = __import__('0-rectangle').Rectangle
 
-my_square = Square()
-print(type(my_square))
-print(my_square.__dict__)
+my_rectangle = Rectangle()
+print(type(my_rectangle))
+print(my_rectangle.__dict__)
 
-guillaume@ubuntu:~/0x06$ ./0-main.py
-<class '0-square.Square'>
+guillaume@ubuntu:~/0x08$ ./0-main.py
+<class '0-rectangle.Rectangle'>
 {}
-guillaume@ubuntu:~/0x06$ 
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 0-square.py
-   
-1. Square with size
+Directory: 0x08-python-more_classes
+File: 0-rectangle.py
+    
+1. Real definition of a rectangle
 mandatory
-Write a class Square that defines a square by: (based on 0-square.py)
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 0-rectangle.py)
 
-Private instance attribute: size
-Instantiation with size (no type/value verification)
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
 You are not allowed to import any module
-Why?
-
-Why size is private attribute?
-
-The size of a square is crucial for a square, many things depend of it (area computation, etc.), so you, as class builder, must control the type and value of this attribute. One way to have the control is to keep it privately. You will see in next tasks how to get, update and validate the size value.
-
-guillaume@ubuntu:~/0x06$ cat 1-main.py
+guillaume@ubuntu:~/0x08$ cat 1-main.py
 #!/usr/bin/python3
-Square = __import__('1-square').Square
+Rectangle = __import__('1-rectangle').Rectangle
 
-my_square = Square(3)
-print(type(my_square))
-print(my_square.__dict__)
+my_rectangle = Rectangle(2, 4)
+print(my_rectangle.__dict__)
 
-try:
-    print(my_square.size)
-except Exception as e:
-    print(e)
+my_rectangle.width = 10
+my_rectangle.height = 3
+print(my_rectangle.__dict__)
 
-try:
-    print(my_square.__size)
-except Exception as e:
-    print(e)
+guillaume@ubuntu:~/0x08$ ./1-main.py
+{'_Rectangle__height': 4, '_Rectangle__width': 2}
+{'_Rectangle__height': 3, '_Rectangle__width': 10}
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
 
-guillaume@ubuntu:~/0x06$ ./1-main.py
-<class '1-square.Square'>
-{'_Square__size': 3}
-'Square' object has no attribute 'size'
-'Square' object has no attribute '__size'
-guillaume@ubuntu:~/0x06$ 
 Repo:
 
 GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 1-square.py
-   
-2. Size validation
+Directory: 0x08-python-more_classes
+File: 1-rectangle.py
+    
+2. Area and Perimeter
 mandatory
-Write a class Square that defines a square by: (based on 1-square.py)
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 1-rectangle.py)
 
-Private instance attribute: size
-Instantiation with optional size: def __init__(self, size=0):
-size must be an integer, otherwise raise a TypeError exception with the message size must be an integer
-if size is less than 0, raise a ValueError exception with the message size must be >= 0
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
+Public instance method: def area(self): that returns the rectangle area
+Public instance method: def perimeter(self): that returns the rectangle perimeter:
+if width or height is equal to 0, perimeter is equal to 0
 You are not allowed to import any module
-guillaume@ubuntu:~/0x06$ cat 2-main.py
+guillaume@ubuntu:~/0x08$ cat 2-main.py
 #!/usr/bin/python3
-Square = __import__('2-square').Square
+Rectangle = __import__('2-rectangle').Rectangle
 
-my_square_1 = Square(3)
-print(type(my_square_1))
-print(my_square_1.__dict__)
-
-my_square_2 = Square()
-print(type(my_square_2))
-print(my_square_2.__dict__)
-
-try:
-    print(my_square_1.size)
-except Exception as e:
-    print(e)
-
-try:
-    print(my_square_1.__size)
-except Exception as e:
-    print(e)
-
-try:
-    my_square_3 = Square("3")
-    print(type(my_square_3))
-    print(my_square_3.__dict__)
-except Exception as e:
-    print(e)
-
-try:
-    my_square_4 = Square(-89)
-    print(type(my_square_4))
-    print(my_square_4.__dict__)
-except Exception as e:
-    print(e)
-
-guillaume@ubuntu:~/0x06$ ./2-main.py
-<class '2-square.Square'>
-{'_Square__size': 3}
-<class '2-square.Square'>
-{'_Square__size': 0}
-'Square' object has no attribute 'size'
-'Square' object has no attribute '__size'
-size must be an integer
-size must be >= 0
-guillaume@ubuntu:~/0x06$ 
-Repo:
-
-GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 2-square.py
-   
-3. Area of a square
-mandatory
-Write a class Square that defines a square by: (based on 2-square.py)
-
-Private instance attribute: size
-Instantiation with optional size: def __init__(self, size=0):
-size must be an integer, otherwise raise a TypeError exception with the message size must be an integer
-if size is less than 0, raise a ValueError exception with the message size must be >= 0
-Public instance method: def area(self): that returns the current square area
-You are not allowed to import any module
-guillaume@ubuntu:~/0x06$ cat 3-main.py
-#!/usr/bin/python3
-Square = __import__('3-square').Square
-
-my_square_1 = Square(3)
-print("Area: {}".format(my_square_1.area()))
-
-try:
-    print(my_square_1.size)
-except Exception as e:
-    print(e)
-
-try:
-    print(my_square_1.__size)
-except Exception as e:
-    print(e)
-
-my_square_2 = Square(5)
-print("Area: {}".format(my_square_2.area()))
-
-guillaume@ubuntu:~/0x06$ ./3-main.py
-Area: 9
-'Square' object has no attribute 'size'
-'Square' object has no attribute '__size'
-Area: 25
-guillaume@ubuntu:~/0x06$ 
-Repo:
-
-GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 3-square.py
-   
-4. Access and update private attribute
-mandatory
-Write a class Square that defines a square by: (based on 3-square.py)
-
-Private instance attribute: size:
-property def size(self): to retrieve it
-property setter def size(self, value): to set it:
-size must be an integer, otherwise raise a TypeError exception with the message size must be an integer
-if size is less than 0, raise a ValueError exception with the message size must be >= 0
-Instantiation with optional size: def __init__(self, size=0):
-Public instance method: def area(self): that returns the current square area
-You are not allowed to import any module
-Why?
-
-Why a getter and setter?
-
-Reminder: size is a private attribute. We did that to make sure we control the type and value. Getter and setter methods are not 100% Python, but more OOP. With them, you will be able to validate the assignment of a private attribute and also define how getting the attribute value will be available from outside - by copy? by assignment? etc. Also, adding type/value validation in the setter will centralize the logic, since you will do it in only one place.
-
-guillaume@ubuntu:~/0x06$ cat 4-main.py
-#!/usr/bin/python3
-Square = __import__('4-square').Square
-
-my_square = Square(89)
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-
-my_square.size = 3
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-
-try:
-    my_square.size = "5 feet"
-    print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-except Exception as e:
-    print(e)
-
-guillaume@ubuntu:~/0x06$ ./4-main.py
-Area: 7921 for size: 89
-Area: 9 for size: 3
-size must be an integer
-guillaume@ubuntu:~/0x06$ 
-Repo:
-
-GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 4-square.py
-   
-5. Printing a square
-mandatory
-Write a class Square that defines a square by: (based on 4-square.py)
-
-Private instance attribute: size:
-property def size(self): to retrieve it
-property setter def size(self, value): to set it:
-size must be an integer, otherwise raise a TypeError exception with the message size must be an integer
-if size is less than 0, raise a ValueError exception with the message size must be >= 0
-Instantiation with optional size: def __init__(self, size=0):
-Public instance method: def area(self): that returns the current square area
-Public instance method: def my_print(self): that prints in stdout the square with the character #:
-if size is equal to 0, print an empty line
-You are not allowed to import any module
-guillaume@ubuntu:~/0x06$ cat 5-main.py
-#!/usr/bin/python3
-Square = __import__('5-square').Square
-
-my_square = Square(3)
-my_square.my_print()
+my_rectangle = Rectangle(2, 4)
+print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
 
 print("--")
 
-my_square.size = 10
-my_square.my_print()
+my_rectangle.width = 10
+my_rectangle.height = 3
+print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
+
+guillaume@ubuntu:~/0x08$ ./2-main.py
+Area: 8 - Perimeter: 12
+--
+Area: 30 - Perimeter: 26
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
+
+Repo:
+
+GitHub repository: alx-higher_level_programming
+Directory: 0x08-python-more_classes
+File: 2-rectangle.py
+    
+3. String representation
+mandatory
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 2-rectangle.py)
+
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
+Public instance method: def area(self): that returns the rectangle area
+Public instance method: def perimeter(self): that returns the rectangle perimeter:
+if width or height is equal to 0, perimeter has to be equal to 0
+print() and str() should print the rectangle with the character #: (see example below)
+if width or height is equal to 0, return an empty string
+You are not allowed to import any module
+guillaume@ubuntu:~/0x08$ cat 3-main.py
+#!/usr/bin/python3
+Rectangle = __import__('3-rectangle').Rectangle
+
+my_rectangle = Rectangle(2, 4)
+print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
+
+print(str(my_rectangle))
+print(repr(my_rectangle))
 
 print("--")
 
-my_square.size = 0
-my_square.my_print()
+my_rectangle.width = 10
+my_rectangle.height = 3
+print(my_rectangle)
+print(repr(my_rectangle))
 
-print("--")
-
-guillaume@ubuntu:~/0x06$ ./5-main.py
-###
-###
-###
+guillaume@ubuntu:~/0x08$ ./3-main.py
+Area: 8 - Perimeter: 12
+##
+##
+##
+##
+<3-rectangle.Rectangle object at 0x7f92a75a2eb8>
 --
 ##########
 ##########
 ##########
-##########
-##########
-##########
-##########
-##########
-##########
-##########
---
+<3-rectangle.Rectangle object at 0x7f92a75a2eb8>
+guillaume@ubuntu:~/0x08$ 
+Object address can be different
 
---
-guillaume@ubuntu:~/0x06$ 
+No test cases needed
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 5-square.py
-   
-6. Coordinates of a square
+Directory: 0x08-python-more_classes
+File: 3-rectangle.py
+    
+4. Eval is magic
 mandatory
-Write a class Square that defines a square by: (based on 5-square.py)
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 3-rectangle.py)
 
-Private instance attribute: size:
-property def size(self): to retrieve it
-property setter def size(self, value): to set it:
-size must be an integer, otherwise raise a TypeError exception with the message size must be an integer
-if size is less than 0, raise a ValueError exception with the message size must be >= 0
-Private instance attribute: position:
-property def position(self): to retrieve it
-property setter def position(self, value): to set it:
-position must be a tuple of 2 positive integers, otherwise raise a TypeError exception with the message position must be a tuple of 2 positive integers
-Instantiation with optional size and optional position: def __init__(self, size=0, position=(0, 0)):
-Public instance method: def area(self): that returns the current square area
-Public instance method: def my_print(self): that prints in stdout the square with the character #:
-if size is equal to 0, print an empty line
-position should be use by using space - Don’t fill lines by spaces when position[1] > 0
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
+Public instance method: def area(self): that returns the rectangle area
+Public instance method: def perimeter(self): that returns the rectangle perimeter:
+if width or height is equal to 0, perimeter has to be equal to 0
+print() and str() should print the rectangle with the character #: (see example below)
+if width or height is equal to 0, return an empty string
+repr() should return a string representation of the rectangle to be able to recreate a new instance by using eval() (see example below)
 You are not allowed to import any module
-guillaume@ubuntu:~/0x06$ cat 6-main.py
+guillaume@ubuntu:~/0x08$ cat 4-main.py
 #!/usr/bin/python3
-Square = __import__('6-square').Square
+Rectangle = __import__('4-rectangle').Rectangle
 
-my_square_1 = Square(3)
-my_square_1.my_print()
-
+my_rectangle = Rectangle(2, 4)
+print(str(my_rectangle))
+print("--")
+print(my_rectangle)
+print("--")
+print(repr(my_rectangle))
+print("--")
+print(hex(id(my_rectangle)))
 print("--")
 
-my_square_2 = Square(3, (1, 1))
-my_square_2.my_print()
-
+# create new instance based on representation
+new_rectangle = eval(repr(my_rectangle))
+print(str(new_rectangle))
+print("--")
+print(new_rectangle)
+print("--")
+print(repr(new_rectangle))
+print("--")
+print(hex(id(new_rectangle)))
 print("--")
 
-my_square_3 = Square(3, (3, 0))
-my_square_3.my_print()
+print(new_rectangle is my_rectangle)
+print(type(new_rectangle) is type(my_rectangle))
 
-print("--")
+guillaume@ubuntu:~/0x08$ ./4-main.py
+##
+##
+##
+##
+--
+##
+##
+##
+##
+--
+Rectangle(2, 4)
+--
+0x7f09ebf7cc88
+--
+##
+##
+##
+##
+--
+##
+##
+##
+##
+--
+Rectangle(2, 4)
+--
+0x7f09ebf7ccc0
+--
+False
+True
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
 
-guillaume@ubuntu:~/0x06$ ./6-main.py | tr " " "_" | cat -e
-###$
-###$
-###$
---$
-$
-_###$
-_###$
-_###$
---$
-___###$
-___###$
-___###$
---$
-guillaume@ubuntu:~/0x06$ 
 Repo:
 
 GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 6-square.py
-   
-7. Singly linked list
-#advanced
-Write a class Node that defines a node of a singly linked list by:
+Directory: 0x08-python-more_classes
+File: 4-rectangle.py
+    
+5. Detect instance deletion
+mandatory
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 4-rectangle.py)
 
-Private instance attribute: data:
-property def data(self): to retrieve it
-property setter def data(self, value): to set it:
-data must be an integer, otherwise raise a TypeError exception with the message data must be an integer
-Private instance attribute: next_node:
-property def next_node(self): to retrieve it
-property setter def next_node(self, value): to set it:
-next_node can be None or must be a Node, otherwise raise a TypeError exception with the message next_node must be a Node object
-Instantiation with data and next_node: def __init__(self, data, next_node=None):
-And, write a class SinglyLinkedList that defines a singly linked list by:
-
-Private instance attribute: head (no setter or getter)
-Simple instantiation: def __init__(self):
-Should be printable:
-print the entire list in stdout
-one node number by line
-Public instance method: def sorted_insert(self, value): that inserts a new Node into the correct sorted position in the list (increasing order)
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
+Public instance method: def area(self): that returns the rectangle area
+Public instance method: def perimeter(self): that returns the rectangle perimeter:
+if width or height is equal to 0, perimeter has to be equal to 0
+print() and str() should print the rectangle with the character #:
+if width or height is equal to 0, return an empty string
+repr() should return a string representation of the rectangle to be able to recreate a new instance by using eval()
+Print the message Bye rectangle... (... being 3 dots not ellipsis) when an instance of Rectangle is deleted
 You are not allowed to import any module
-guillaume@ubuntu:~/0x06$ cat 100-main.py
+guillaume@ubuntu:~/0x08$ cat 5-main.py
 #!/usr/bin/python3
-SinglyLinkedList = __import__('100-singly_linked_list').SinglyLinkedList
+Rectangle = __import__('5-rectangle').Rectangle
 
-sll = SinglyLinkedList()
-sll.sorted_insert(2)
-sll.sorted_insert(5)
-sll.sorted_insert(3)
-sll.sorted_insert(10)
-sll.sorted_insert(1)
-sll.sorted_insert(-4)
-sll.sorted_insert(-3)
-sll.sorted_insert(4)
-sll.sorted_insert(5)
-sll.sorted_insert(12)
-sll.sorted_insert(3)
-print(sll)
+my_rectangle = Rectangle(2, 4)
+print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
 
-guillaume@ubuntu:~/0x06$ ./100-main.py
--4
--3
-1
-2
-3
-3
-4
-5
-5
-10
-12
-guillaume@ubuntu:~/0x06$ 
+del my_rectangle
+
+try:
+    print(my_rectangle)
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
+
+guillaume@ubuntu:~/0x08$ ./5-main.py
+Area: 8 - Perimeter: 12
+Bye rectangle...
+[NameError] name 'my_rectangle' is not defined
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
+
 Repo:
 
 GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 100-singly_linked_list.py
-   
-8. Print Square instance
-#advanced
-Write a class Square that defines a square by: (based on 6-square.py)
+Directory: 0x08-python-more_classes
+File: 5-rectangle.py
+    
+6. How many instances
+mandatory
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 5-rectangle.py)
 
-Private instance attribute: size:
-property def size(self): to retrieve it
-property setter def size(self, value): to set it:
-size must be an integer, otherwise raise a TypeError exception with the message size must be an integer
-if size is less than 0, raise a ValueError exception with the message size must be >= 0
-Private instance attribute: position:
-property def position(self): to retrieve it
-property setter def position(self, value): to set it:
-position must be a tuple of 2 positive integers, otherwise raise a TypeError exception with the message position must be a tuple of 2 positive integer
-Instantiation with optional size and optional position: def __init__(self, size=0, position=(0, 0)):
-Public instance method: def area(self): that returns the current square area
-Public instance method: def my_print(self): that prints in stdout the square with the character #:
-if size is equal to 0, print an empty line
-position should be use by using space
-Printing a Square instance should have the same behavior as my_print()
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Public class attribute number_of_instances:
+Initialized to 0
+Incremented during each new instance instantiation
+Decremented during each instance deletion
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
+Public instance method: def area(self): that returns the rectangle area
+Public instance method: def perimeter(self): that returns the rectangle perimeter:
+if width or height is equal to 0, perimeter has to be equal to 0
+print() and str() should print the rectangle with the character #:
+if width or height is equal to 0, return an empty string
+repr() should return a string representation of the rectangle to be able to recreate a new instance by using eval()
+Print the message Bye rectangle... (... being 3 dots not ellipsis) when an instance of Rectangle is deleted
 You are not allowed to import any module
-guillaume@ubuntu:~/0x06$ cat 101-main.py
+guillaume@ubuntu:~/0x08$ cat 6-main.py
 #!/usr/bin/python3
-Square = __import__('101-square').Square
+Rectangle = __import__('6-rectangle').Rectangle
 
-my_square = Square(5, (0, 0))
+my_rectangle_1 = Rectangle(2, 4)
+my_rectangle_2 = Rectangle(2, 4)
+print("{:d} instances of Rectangle".format(Rectangle.number_of_instances))
+del my_rectangle_1
+print("{:d} instances of Rectangle".format(Rectangle.number_of_instances))
+del my_rectangle_2
+print("{:d} instances of Rectangle".format(Rectangle.number_of_instances))
+
+guillaume@ubuntu:~/0x08$ ./6-main.py
+2 instances of Rectangle
+Bye rectangle...
+1 instances of Rectangle
+Bye rectangle...
+0 instances of Rectangle
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
+
+Repo:
+
+GitHub repository: alx-higher_level_programming
+Directory: 0x08-python-more_classes
+File: 6-rectangle.py
+    
+7. Change representation
+mandatory
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 6-rectangle.py)
+
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Public class attribute number_of_instances:
+Initialized to 0
+Incremented during each new instance instantiation
+Decremented during each instance deletion
+Public class attribute print_symbol:
+Initialized to #
+Used as symbol for string representation
+Can be any type
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
+Public instance method: def area(self): that returns the rectangle area
+Public instance method: def perimeter(self): that returns the rectangle perimeter:
+if width or height is equal to 0, perimeter has to be equal to 0
+print() and str() should print the rectangle with the character(s) stored in print_symbol:
+if width or height is equal to 0, return an empty string
+repr() should return a string representation of the rectangle to be able to recreate a new instance by using eval()
+Print the message Bye rectangle... (... being 3 dots not ellipsis) when an instance of Rectangle is deleted
+You are not allowed to import any module
+guillaume@ubuntu:~/0x08$ cat 7-main.py
+#!/usr/bin/python3
+Rectangle = __import__('7-rectangle').Rectangle
+
+my_rectangle_1 = Rectangle(8, 4)
+print(my_rectangle_1)
+print("--")
+my_rectangle_1.print_symbol = "&"
+print(my_rectangle_1)
+print("--")
+
+my_rectangle_2 = Rectangle(2, 1)
+print(my_rectangle_2)
+print("--")
+Rectangle.print_symbol = "C"
+print(my_rectangle_2)
+print("--")
+
+my_rectangle_3 = Rectangle(7, 3)
+print(my_rectangle_3)
+
+print("--")
+
+my_rectangle_3.print_symbol = ["C", "is", "fun!"]
+print(my_rectangle_3)
+
+print("--")
+
+guillaume@ubuntu:~/0x08$ ./7-main.py
+########
+########
+########
+########
+--
+&&&&&&&&
+&&&&&&&&
+&&&&&&&&
+&&&&&&&&
+--
+##
+--
+CC
+--
+CCCCCCC
+CCCCCCC
+CCCCCCC
+--
+['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']
+['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']
+['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']['C', 'is', 'fun!']
+--
+Bye rectangle...
+Bye rectangle...
+Bye rectangle...
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
+
+Repo:
+
+GitHub repository: alx-higher_level_programming
+Directory: 0x08-python-more_classes
+File: 7-rectangle.py
+    
+8. Compare rectangles
+mandatory
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 7-rectangle.py)
+
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Public class attribute number_of_instances:
+Initialized to 0
+Incremented during each new instance instantiation
+Decremented during each instance deletion
+Public class attribute print_symbol:
+Initialized to #
+Used as symbol for string representation
+Can be any type
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
+Public instance method: def area(self): that returns the rectangle area
+Public instance method: def perimeter(self): that returns the rectangle perimeter:
+if width or height is equal to 0, perimeter has to be equal to 0
+print() and str() should print the rectangle with the character #:
+if width or height is equal to 0, return an empty string
+repr() should return a string representation of the rectangle to be able to recreate a new instance by using eval()
+Print the message Bye rectangle... (... being 3 dots not ellipsis) when an instance of Rectangle is deleted
+Static method def bigger_or_equal(rect_1, rect_2): that returns the biggest rectangle based on the area
+rect_1 must be an instance of Rectangle, otherwise raise a TypeError exception with the message rect_1 must be an instance of Rectangle
+rect_2 must be an instance of Rectangle, otherwise raise a TypeError exception with the message rect_2 must be an instance of Rectangle
+Returns rect_1 if both have the same area value
+You are not allowed to import any module
+guillaume@ubuntu:~/0x08$ cat 8-main.py
+#!/usr/bin/python3
+Rectangle = __import__('8-rectangle').Rectangle
+
+my_rectangle_1 = Rectangle(8, 4)
+my_rectangle_2 = Rectangle(2, 3)
+
+if my_rectangle_1 is Rectangle.bigger_or_equal(my_rectangle_1, my_rectangle_2):
+    print("my_rectangle_1 is bigger or equal to my_rectangle_2")
+else:
+    print("my_rectangle_2 is bigger than my_rectangle_1")
+
+
+my_rectangle_2.width = 10
+my_rectangle_2.height = 5
+if my_rectangle_1 is Rectangle.bigger_or_equal(my_rectangle_1, my_rectangle_2):
+    print("my_rectangle_1 is bigger or equal to my_rectangle_2")
+else:
+    print("my_rectangle_2 is bigger than my_rectangle_1")
+
+guillaume@ubuntu:~/0x08$ ./8-main.py
+my_rectangle_1 is bigger or equal to my_rectangle_2
+my_rectangle_2 is bigger than my_rectangle_1
+Bye rectangle...
+Bye rectangle...
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
+
+Repo:
+
+GitHub repository: alx-higher_level_programming
+Directory: 0x08-python-more_classes
+File: 8-rectangle.py
+    
+9. A square is a rectangle
+mandatory
+Score: 0.0% (Checks completed: 0.0%)
+Write a class Rectangle that defines a rectangle by: (based on 8-rectangle.py)
+
+Private instance attribute: width:
+property def width(self): to retrieve it
+property setter def width(self, value): to set it:
+width must be an integer, otherwise raise a TypeError exception with the message width must be an integer
+if width is less than 0, raise a ValueError exception with the message width must be >= 0
+Private instance attribute: height:
+property def height(self): to retrieve it
+property setter def height(self, value): to set it:
+height must be an integer, otherwise raise a TypeError exception with the message height must be an integer
+if height is less than 0, raise a ValueError exception with the message height must be >= 0
+Public class attribute number_of_instances:
+Initialized to 0
+Incremented during each new instance instantiation
+Decremented during each instance deletion
+Public class attribute print_symbol:
+Initialized to #
+Used as symbol for string representation
+Can be any type
+Instantiation with optional width and height: def __init__(self, width=0, height=0):
+Public instance method: def area(self): that returns the rectangle area
+Public instance method: def perimeter(self): that returns the rectangle perimeter:
+if width or height is equal to 0, perimeter has to be equal to 0
+print() and str() should print the rectangle with the character #:
+if width or height is equal to 0, return an empty string
+repr() should return a string representation of the rectangle to be able to recreate a new instance by using eval()
+Print the message Bye rectangle... (... being 3 dots not ellipsis) when an instance of Rectangle is deleted
+Static method def bigger_or_equal(rect_1, rect_2): that returns the biggest rectangle based on the area
+rect_1 must be an instance of Rectangle, otherwise raise a TypeError exception with the message rect_1 must be an instance of Rectangle
+rect_2 must be an instance of Rectangle, otherwise raise a TypeError exception with the message rect_2 must be an instance of Rectangle
+Returns rect_1 if both have the same area value
+Class method def square(cls, size=0): that returns a new Rectangle instance with width == height == size
+You are not allowed to import any module
+guillaume@ubuntu:~/0x08$ cat 9-main.py
+#!/usr/bin/python3
+Rectangle = __import__('9-rectangle').Rectangle
+
+my_square = Rectangle.square(5)
+print("Area: {} - Perimeter: {}".format(my_square.area(), my_square.perimeter()))
 print(my_square)
 
-print("--")
+guillaume@ubuntu:~/0x08$ ./9-main.py
+Area: 25 - Perimeter: 20
+#####
+#####
+#####
+#####
+#####
+Bye rectangle...
+guillaume@ubuntu:~/0x08$ 
+No test cases needed
 
-my_square = Square(5, (4, 1))
-print(my_square)
-
-guillaume@ubuntu:~/0x06$ ./101-main.py | tr " " "_" | cat -e
-#####$
-#####$
-#####$
-#####$
-#####$
---$
-$
-____#####$
-____#####$
-____#####$
-____#####$
-____#####$
-guillaume@ubuntu:~/0x06$ 
 Repo:
 
 GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 101-square.py
-   
-9. Compare 2 squares
+Directory: 0x08-python-more_classes
+File: 9-rectangle.py
+    
+10. N queens
 #advanced
-Write a class Square that defines a square by: (based on 4-square.py)
+Score: 0.0% (Checks completed: 0.0%)
 
-Private instance attribute: size:
-property def size(self): to retrieve it
-property setter def size(self, value): to set it:
-size must be a number (float or integer), otherwise raise a TypeError exception with the message size must be a number
-if size is less than 0, raise a ValueError exception with the message size must be >= 0
-Instantiation with size: def __init__(self, size=0):
-Public instance method: def area(self): that returns the current square area
-Square instance can answer to comparators: ==, !=, >, >=, < and <= based on the square area
-You are not allowed to import any module
-guillaume@ubuntu:~/0x06$ cat 102-main.py
-#!/usr/bin/python3
-Square = __import__('102-square').Square
+Chess grandmaster Judit Polgár, the strongest female chess player of all time
 
-s_5 = Square(5)
-s_6 = Square(6)
 
-if s_5 < s_6:
-    print("Square 5 < Square 6")
-if s_5 <= s_6:
-    print("Square 5 <= Square 6")
-if s_5 == s_6:
-    print("Square 5 == Square 6")
-if s_5 != s_6:
-    print("Square 5 != Square 6")
-if s_5 > s_6:
-    print("Square 5 > Square 6")
-if s_5 >= s_6:
-    print("Square 5 >= Square 6")
+The N queens puzzle is the challenge of placing N non-attacking queens on an N×N chessboard. Write a program that solves the N queens problem.
 
-guillaume@ubuntu:~/0x06$ ./102-main.py
-Square 5 < Square 6
-Square 5 <= Square 6
-Square 5 != Square 6
-guillaume@ubuntu:~/0x06$ 
+Usage: nqueens N
+If the user called the program with the wrong number of arguments, print Usage: nqueens N, followed by a new line, and exit with the status 1
+where N must be an integer greater or equal to 4
+If N is not an integer, print N must be a number, followed by a new line, and exit with the status 1
+If N is smaller than 4, print N must be at least 4, followed by a new line, and exit with the status 1
+The program should print every possible solution to the problem
+One solution per line
+Format: see example
+You don’t have to print the solutions in a specific order
+You are only allowed to import the sys module
+Read: Queen, Backtracking
+
+julien@ubuntu:~/0x08. N Queens$ ./101-nqueens.py 4
+[[0, 1], [1, 3], [2, 0], [3, 2]]
+[[0, 2], [1, 0], [2, 3], [3, 1]]
+julien@ubuntu:~/0x08. N Queens$ ./101-nqueens.py 6
+[[0, 1], [1, 3], [2, 5], [3, 0], [4, 2], [5, 4]]
+[[0, 2], [1, 5], [2, 1], [3, 4], [4, 0], [5, 3]]
+[[0, 3], [1, 0], [2, 4], [3, 1], [4, 5], [5, 2]]
+[[0, 4], [1, 2], [2, 0], [3, 5], [4, 3], [5, 1]]
+julien@ubuntu:~/0x08. N Queens$ 
 Repo:
 
 GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 102-square.py
-   
-10. ByteCode -> Python #5
-#advanced
-Write the Python class MagicClass that does exactly the same as the following Python bytecode:
-
-Disassembly of __init__:
- 10           0 LOAD_CONST               1 (0)
-              3 LOAD_FAST                0 (self)
-              6 STORE_ATTR               0 (_MagicClass__radius)
-
- 11           9 LOAD_GLOBAL              1 (type)
-             12 LOAD_FAST                1 (radius)
-             15 CALL_FUNCTION            1 (1 positional, 0 keyword pair)
-             18 LOAD_GLOBAL              2 (int)
-             21 COMPARE_OP               9 (is not)
-             24 POP_JUMP_IF_FALSE       60
-             27 LOAD_GLOBAL              1 (type)
-             30 LOAD_FAST                1 (radius)
-             33 CALL_FUNCTION            1 (1 positional, 0 keyword pair)
-             36 LOAD_GLOBAL              3 (float)
-             39 COMPARE_OP               9 (is not)
-             42 POP_JUMP_IF_FALSE       60
-
- 12          45 LOAD_GLOBAL              4 (TypeError)
-             48 LOAD_CONST               2 ('radius must be a number')
-             51 CALL_FUNCTION            1 (1 positional, 0 keyword pair)
-             54 RAISE_VARARGS            1
-             57 JUMP_FORWARD             0 (to 60)
-
- 13     >>   60 LOAD_FAST                1 (radius)
-             63 LOAD_FAST                0 (self)
-             66 STORE_ATTR               0 (_MagicClass__radius)
-             69 LOAD_CONST               3 (None)
-             72 RETURN_VALUE
-
-Disassembly of area:
- 17           0 LOAD_FAST                0 (self)
-              3 LOAD_ATTR                0 (_MagicClass__radius)
-              6 LOAD_CONST               1 (2)
-              9 BINARY_POWER
-             10 LOAD_GLOBAL              1 (math)
-             13 LOAD_ATTR                2 (pi)
-             16 BINARY_MULTIPLY
-             17 RETURN_VALUE
-
-Disassembly of circumference:
- 21           0 LOAD_CONST               1 (2)
-              3 LOAD_GLOBAL              0 (math)
-              6 LOAD_ATTR                1 (pi)
-              9 BINARY_MULTIPLY
-             10 LOAD_FAST                0 (self)
-             13 LOAD_ATTR                2 (_MagicClass__radius)
-             16 BINARY_MULTIPLY
-             17 RETURN_VALUE
-Tip: Python bytecode
-Repo:
-
-GitHub repository: alx-higher_level_programming
-Directory: 0x06-python-classes
-File: 103-magic_class.py
-   
+Directory: 0x08-python-more_classes
+File: 101-nqueens.py
+    
+Copyright © 2023 AL
