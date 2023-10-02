@@ -1,4 +1,11 @@
+Instruction on how to use 4-print_square
+========================================
+
+Import modules
+
 >>> print_square = __import__("4-print_square").print_square
+
+Check for correct output
 >>> print_square(4)
 ####
 ####
