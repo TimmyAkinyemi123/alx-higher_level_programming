@@ -5,6 +5,7 @@
 
 
 class Rectangle:
+    """Creates a new rectangle"""
     def __init__(self, width=0, height=0):
         """ Initialize a new Rectangle
         Args:
