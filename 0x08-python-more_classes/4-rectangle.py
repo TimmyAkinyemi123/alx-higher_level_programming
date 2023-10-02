@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# 3-rectangle.py
+# 4-rectangle.py
 
 """ Defines a class Rectangle. """
 
@@ -62,9 +62,9 @@ class Rectangle:
             if i != self.__height - 1:
                 rec.append("\n")
         return "".join(rec)
-    
+
     def __repr__(self):
         """Returns the string representation of the Rectangle"""
-        rect = "Rectangle ()" + str(self.__width)
+        rect = "Rectangle (" + str(self.__width)
         rect += ", " + str(self.__height) + ")"
         return rect
