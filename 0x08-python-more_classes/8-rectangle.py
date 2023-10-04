@@ -63,7 +63,7 @@ class Rectangle:
             return ("")
         rec = []
         for i in range(self.__height):
-            [rect.append(str(self.print_symbol)) for j in range(self.__width)]
+            [rec.append(str(self.print_symbol)) for j in range(self.__width)]
             if i != self.__height - 1:
                 rec.append("\n")
         return "".join(rec)
@@ -78,7 +78,7 @@ class Rectangle:
         """Print a message after deletion of a Rectangle"""
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
-    
+
     def bigger_or_equal(rect_1, rect_2):
         """Returns the biggest rectangle based on the Area
         Args:
