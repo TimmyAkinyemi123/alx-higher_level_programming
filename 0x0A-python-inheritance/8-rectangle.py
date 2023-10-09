@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 
-"""Defines a base geometry class BaseGeometry."""
+"""Defines a Rectangle that inherits from Basegeometry."""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """Defines a rectangle that inherits from Basegeometry."""
+    """Defines Rectangle using Basegeometry."""
 
     def __init__(self, width, height):
         """Instantiates a Rectangle with width and height.
