@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+
 """Script that adds all arguments to a Python list
 and saves them to a JSON file."""
+
 
 import sys
 import os
