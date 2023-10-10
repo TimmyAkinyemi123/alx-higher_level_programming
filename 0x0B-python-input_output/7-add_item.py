@@ -5,8 +5,8 @@ import sys
 from os import path
 from importlib import import_module
 
-if not path.isfile("5-save_to_json_file.py") or not path.isfile(
-    "6-load_from_json_file.py"):
+if not path.isfile("5-save_to_json_file.py") or not 
+path.isfile("6-load_from_json_file.py"):
     raise ImportError("5-save_to_json_file.py and 6-load_from_json_file.py are required.")
 
 save_to_json_file = import_module("5-save_to_json_file").save_to_json_file
