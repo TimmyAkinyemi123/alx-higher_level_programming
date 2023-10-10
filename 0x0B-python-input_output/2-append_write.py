@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-#2-append_write
+# 2-append_write
 
 """Defines a function that appends to a text file"""
+
 
 def append_write(filename="", text=""):
     """Appends a string to a UTF-8 text file
