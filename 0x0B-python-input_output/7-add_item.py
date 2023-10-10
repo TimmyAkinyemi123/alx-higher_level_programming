@@ -1,25 +1,18 @@
 #!/usr/bin/python3
+"""Script that adds all arguments to a Python list
+and saves them to a JSON file."""
 
-"""Add all arguments to a Python list and save them to a file."""
 import sys
-from os import path
-from importlib import import_module
+import os
+from save_to_json_file import save_to_json_file
+from load_from_json_file import load_from_json_file
 
-if not path.isfile("5-save_to_json_file.py") or not
-path.isfile("6-load_from_json_file.py"):
-    raise ImportError(
-        "5-save_to_json_file.py and 6-load_from_json_file.py are required."
-    )
+json_file = "add_item.json"
 
-save_to_json_file = import_module("5-save_to_json_file").
-save_to_json_file
-load_from_json_file = import_module("6-load_from_json_file").
-load_from_json_file
-
-try:
-    items = load_from_json_file("add_item.json")
-except FileNotFoundError:
-    items = []
-
-items.extend(sys.argv[1:])
-save_to_json_file(items, "add_item.json")
+if os.path.exists(json_file):
+    my_list = load_from_json_file(json_file)
+else:
+    my_list = []
+my_list.extend(sys.argv[1:])
+save_to_json_file(my_list, json_file)
+print(my_list)
