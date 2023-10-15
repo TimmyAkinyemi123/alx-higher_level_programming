@@ -9,11 +9,11 @@ class Rectangle(Base):
     """Represents a Rectangle"""
     def __init__(self, width, height, x=0, y=0, id=None):
         """Inialializes instances of the class"""
-        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
     def width(self):
@@ -27,7 +27,7 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
-    
+
     @property
     def height(self):
         """Gets/sets the value of height"""
@@ -63,19 +63,22 @@ class Rectangle(Base):
     def y(self, value):
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
-        if y < 0:
+        if value < 0:
             raise ValueError("y must be >= 0")
-    
+        self.__y = value
+
     def area(self):
         """Returns the area of the rectangle"""
         return self.__width * self.__height
 
     def display(self):
         """Prints rectangle in stdout"""
-        for - in range(self.__y):
-            print()
-        for - in range(self.__height):
-            print("" * self.__x + "#" * self.__width)
+        rectangle = self.y * "\n"
+        for i in range(self.height):
+            rectangle += (" " * self.x)
+            rectangle += ("#" * self.width) + "\n"
+
+        print(rectangle, end='')
 
     def update(self, *args, **kwargs):
         """Assigns an attribute to each argument"""
@@ -91,9 +94,9 @@ class Rectangle(Base):
     def to_dictionary(self):
         """Returns dict representation of Rectangle"""
         list_atr = ['id', 'width', 'height', 'x', 'y']
-        
+
         dict_res = {}
-        
+
         for key in list_atr:
             dict_res[key] = getattr(self, key)
 
