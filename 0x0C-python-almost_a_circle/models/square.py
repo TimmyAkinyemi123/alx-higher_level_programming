@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Defines the Square class"""
-from model.rectangle import Rectangle
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
@@ -29,8 +29,8 @@ class Square(Rectangle):
         """Updates the instances"""
         if args:
             attr_list = ['id', 'size', 'x', 'y']
-            for i, arg in enumerate(arg):
-                setattr(Self, attr_list[i], arg)
+            for i, args in enumerate(args):
+                setattr(self, attr_list[i], args)
 
         else:
             for key, value in kwargs.items():
@@ -46,6 +46,6 @@ class Square(Rectangle):
                 dict_res[key] = getattr(self, 'width')
 
             else:
-                dict_res[key] = getattr(Self, key)
+                dict_res[key] = getattr(self, key)
 
         return dict_res
