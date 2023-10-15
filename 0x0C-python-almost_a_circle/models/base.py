@@ -78,16 +78,26 @@ class Base:
         """Serializes in CSV"""
         filename = "{}.csv".format(cls.__name__)
 
-        with open(filename, mode='w', newline='') as file:
-            writer = csv.writer(file)
-            if cls.__name__ == "Rectangle":
-                for obj in list_objs:
-                    writer.writerow([obj.id, obj.width,\
-                            obj.height, obj.x, obj.y])
-            elif cls.__name__ == "Square":
-                for obj in list_objs:
-                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+        if cls.__name__ == "Rectangle":
+            list_dic = [0, 0, 0, 0, 0]
+            list_keys = ['id', 'width', 'height', 'x', 'y']
+        else:
+            list_dic = ['0', '0', '0', '0']
+            list_keys = ['id', 'size', 'x', 'y']
 
+        matrix = []
+
+        if not list_objs:
+            pass
+        else:
+            for obj in list_objs:
+                for kv in range(len(list_keys)):
+                    list_dic[kv] = obj.to_dictionary()[list_keys[kv]]
+                matrix.append(list_dic[:])
+
+        with open(filename, 'w') as writeFile:
+            writer = csv.writer(writeFile)
+            writer.writerows(matrix)
     @classmethod
     def load_from_file_csv(cls):
         filename = "{}.csv".format(cls.__name__)
