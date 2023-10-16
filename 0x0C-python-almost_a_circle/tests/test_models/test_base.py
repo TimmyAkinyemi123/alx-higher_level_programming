@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """Defines test cases for Base class"""
 import unittest
+from unittest import TestCase
 from models.base import Base
 from models.square import Square
 from models.rectangle import Rectangle
 
 
-class TestBase(unittest.testCase):
+class TestBase(unittest.TestCase):
     """Tests the Base class functionalities"""
     def setUp(self):
         """Sets up nb_objects for every test"""
@@ -72,8 +73,10 @@ class TestBase(unittest.testCase):
                 {'name': 'Alice', 'age': 25}
                 ]
         result = Base.to_json_string(list_dicts)
-        expected =
-        '[{"name": "John", "age": 30}, {"name": "Alice", "age": 25}]'
+        expected = (
+                '[{"name": "John", "age": 30},'
+                '{"name": "Alice", "age": 25}]'
+                )
         self.assertEqual(result, expected)
 
     def test_save_to_file_csv(self):
