@@ -43,10 +43,10 @@ class TestBase(unittest.testCase):
         instance_2 = Base(10)
         instance_3 = Base()
         instance_4 = Base(20)
-        self.assertEqual(base_instance1.id, 1)
-        self.assertEqual(base_instance2.id, 10)
-        self.assertEqual(base_instance3.id, 11)
-        self.assertEqual(base_instance4.id, 20)
+        self.assertEqual(instance_1.id, 1)
+        self.assertEqual(instance_2.id, 10)
+        self.assertEqual(instance_3.id, 11)
+        self.assertEqual(instance_4.id, 20)
 
     def test_multiple_id_arguments(self):
         """Test cases of multiple arguments"""
@@ -70,27 +70,68 @@ class TestBase(unittest.testCase):
         list_dicts = [{'name': 'John', 'age': 30},
                 {'name': 'Alice', 'age': 25}]
         result = Base.to_json_string(list_dicts)
-        expected = '[{"name": "John", "age": 30},
-        {"name": "Alice", "age": 25}]'
+        expected = '[{"name": "John", "age": 30}, {"name": "Alice", "age": 25}]'
         self.assertEqual(result, expected)
-
-ngle.json")
-
-                                    def test_save_to_file_empty_list(self):
-                                                Rectangle.save_to_file([])
-                                                        self.assertFalse(os.path.exists("Rectangle.json"))
-
-                                                            def test_save_to_file_with_rectangles(self):
-                                                                        r1 = Rectangle(10, 7, 2, 8)
-                                                                                r2 = Rectangle(2, 4)
-                                                                                        Rectangle.save_to_file([r1, r2])
-                                                                                                self.assertTrue(os.path.exists("Rectangle.json"))
-
-                                                                                                    def tearDown(self):
-                                                                                                                if os.path.exists("Rectangle.json"):
-                                                                                                                                os.remove("Rectangle.json")
-
-
-
-
-
+    
+    def test_save_to_file_csv(self):
+        """Test save_to_file_csv method."""
+        r1 = Rectangle(3, 5)
+        r2 = Rectangle(7, 2)
+        with self.subTest():
+            with self.assertRaises(FileNotFoundError):
+                Rectangle.save_to_file_csv([r1, r2])
+        s1 = Square(4)
+        s2 = Square(2, 1, 2)
+        with self.subTest():
+            with self.assertRaises(FileNotFoundError):
+                Square.save_to_file_csv([s1, s2])
+    
+    def test_load_from_file_csv(self):
+        """Test load_from_file_csv method."""
+        with self.subTest():
+            with self.assertRaises(FileNotFoundError):
+                Rectangle.load_from_file_csv()
+        
+        with self.subTest():
+            with self.assertRaises(FileNotFoundError):
+                Square.load_from_file_csv()
+    
+    def test_create(self):
+        """Test create method."""
+        r1 = Rectangle(3, 5)
+        r2 = Rectangle(7, 2)
+        r1_dict = r1.to_dictionary()
+        r2_dict = r2.to_dictionary()
+        r1_copy = Rectangle.create(**r1_dict)
+        r2_copy = Rectangle.create(**r2_dict)
+        self.assertEqual(r1, r1_copy)
+        self.assertEqual(r2, r2_copy)
+        
+        s1 = Square(4)
+        s2 = Square(2, 1, 2)
+        s1_dict = s1.to_dictionary()
+        s2_dict = s2.to_dictionary()
+        s1_copy = Square.create(**s1_dict)
+        s2_copy = Square.create(**s2_dict)
+        self.assertEqual(s1, s1_copy)
+        self.assertEqual(s2, s2_copy)
+    
+    def test_load_from_file(self):
+        """Test load_from_file method."""
+        r1 = Rectangle(3, 5)
+        r2 = Rectangle(7, 2)
+        r1_dict = r1.to_dictionary()
+        r2_dict = r2.to_dictionary()
+        r1_copy = Rectangle.load_from_file()
+        r2_copy = Rectangle.load_from_file()
+        self.assertEqual(r1, r1_copy[0])
+        self.assertEqual(r2, r2_copy[1])
+        
+        s1 = Square(4)
+        s2 = Square(2, 1, 2)
+        s1_dict = s1.to_dictionary()
+        s2_dict = s2.to_dictionary()
+        s1_copy = Square.load_from_file()
+        s2_copy = Square.load_from_file()
+        self.assertEqual(s1, s1_copy[0])
+        self.assertEqual(s2, s2_copy[1])
