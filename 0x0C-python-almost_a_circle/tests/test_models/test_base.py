@@ -67,12 +67,15 @@ class TestBase(unittest.testCase):
     def test_list_of_dictionaries(self):
         """Tests to_json_string method with
         list of dicts"""
-        list_dicts = [{'name': 'John', 'age': 30},
-                {'name': 'Alice', 'age': 25}]
+        list_dicts = [
+                {'name': 'John', 'age': 30},
+                {'name': 'Alice', 'age': 25}
+                ]
         result = Base.to_json_string(list_dicts)
-        expected = '[{"name": "John", "age": 30}, {"name": "Alice", "age": 25}]'
+        expected =
+        '[{"name": "John", "age": 30}, {"name": "Alice", "age": 25}]'
         self.assertEqual(result, expected)
-    
+
     def test_save_to_file_csv(self):
         """Test save_to_file_csv method."""
         r1 = Rectangle(3, 5)
@@ -85,17 +88,17 @@ class TestBase(unittest.testCase):
         with self.subTest():
             with self.assertRaises(FileNotFoundError):
                 Square.save_to_file_csv([s1, s2])
-    
+
     def test_load_from_file_csv(self):
         """Test load_from_file_csv method."""
         with self.subTest():
             with self.assertRaises(FileNotFoundError):
                 Rectangle.load_from_file_csv()
-        
+
         with self.subTest():
             with self.assertRaises(FileNotFoundError):
                 Square.load_from_file_csv()
-    
+
     def test_create(self):
         """Test create method."""
         r1 = Rectangle(3, 5)
@@ -106,7 +109,7 @@ class TestBase(unittest.testCase):
         r2_copy = Rectangle.create(**r2_dict)
         self.assertEqual(r1, r1_copy)
         self.assertEqual(r2, r2_copy)
-        
+
         s1 = Square(4)
         s2 = Square(2, 1, 2)
         s1_dict = s1.to_dictionary()
@@ -115,7 +118,7 @@ class TestBase(unittest.testCase):
         s2_copy = Square.create(**s2_dict)
         self.assertEqual(s1, s1_copy)
         self.assertEqual(s2, s2_copy)
-    
+
     def test_load_from_file(self):
         """Test load_from_file method."""
         r1 = Rectangle(3, 5)
@@ -126,7 +129,7 @@ class TestBase(unittest.testCase):
         r2_copy = Rectangle.load_from_file()
         self.assertEqual(r1, r1_copy[0])
         self.assertEqual(r2, r2_copy[1])
-        
+
         s1 = Square(4)
         s2 = Square(2, 1, 2)
         s1_dict = s1.to_dictionary()
