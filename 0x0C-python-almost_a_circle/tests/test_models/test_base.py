@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines test cases for Base class"""
 import unittest
+import os
 from unittest import TestCase
 from models.base import Base
 from models.square import Square
@@ -67,7 +68,7 @@ class TestBase(unittest.TestCase):
         """Tests to_json_string with no input"""
         result = Base.to_json_string(None)
         self.assertEqual(result, "[]")
-    
+
     def test_save_to_file_1(self):
         """ Tests the save_to_file method """
         Square.save_to_file(None)
@@ -77,12 +78,9 @@ class TestBase(unittest.TestCase):
                 print(file.read())
                 self.assertEqual(str_out.getvalue(), res)
 
-        try:
-            os.remove("Square.json")
-        except:
-            pass
+        os.remove("Square.json")
 
-        Rectangle.save_to_file([])
+        Square.save_to_file([])
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(), "[]")
 
@@ -94,10 +92,8 @@ class TestBase(unittest.TestCase):
             with patch('sys.stdout', new=StringIO()) as str_out:
                 print(file.read())
                 self.assertEqual(str_out.getvalue(), res)
-        try:
-            os.remove("Rectangle.json")
-        except:
-            pass
+
+        os.remove("Rectangle.json")
 
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
