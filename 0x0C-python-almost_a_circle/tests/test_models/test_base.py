@@ -15,10 +15,12 @@ class TestBase(unittest.TestCase):
 
     def test_nb_increment(self):
         """tests the increment of __nb_objects"""
-        instance1 = Base()
-        instance2 = Base()
-        instance3 = Base()
-        self.assertEqual(Base.__nb_objects, 3)
+        instance_1 = Base()
+        instance_2 = Base()
+        instance_3 = Base()
+        self.assertEqual(instance_1.id, 1)
+        self.assertEqual(instance_2.id, 2)
+        self.assertEqual(instance_3.id, 3)
 
     def test_base_private_attr(self):
         """Tests if __nb_objects is private"""
@@ -46,7 +48,7 @@ class TestBase(unittest.TestCase):
         instance_4 = Base(20)
         self.assertEqual(instance_1.id, 1)
         self.assertEqual(instance_2.id, 10)
-        self.assertEqual(instance_3.id, 11)
+        self.assertEqual(instance_3.id, 2)
         self.assertEqual(instance_4.id, 20)
 
     def test_multiple_id_arguments(self):
