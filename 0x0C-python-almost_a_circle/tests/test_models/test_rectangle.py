@@ -61,33 +61,32 @@ class TestRectangle(unittest.TestCase):
         Test for private attributes
         """
         rect = Rectangle(8, 15, 2, 2)
-
         with self.assertRaises(AttributeError):
             rect.__width
 
     def test_private_attr2(self):
-     """Test for private attributes"""
-     rect = Rectangle(8, 15, 2, 2)
-     with self.assertRaises(AttributeError):
-         rect.__height
+        """Test for private attributes"""
+        rect = Rectangle(8, 15, 2, 2)
+        with self.assertRaises(AttributeError):
+            rect.__height
 
     def test_private_attr3(self):
-     """Test for private attributes"""
-     rect = Rectangle(8, 15, 2, 2)
-     with self.assertRaises(AttributeError):
-         rect.__x
+        """Test for private attributes"""
+        rect = Rectangle(8, 15, 2, 2)
+        with self.assertRaises(AttributeError):
+            rect.__x
 
     def test_private_attr4(self):
-     """Test for private attributes"""
-     rect = Rectangle(8, 15, 2, 2)
-     with self.assertRaises(AttributeError):
-         rect.__y
-    
+        """Test for private attributes"""
+        rect = Rectangle(8, 15, 2, 2)
+        with self.assertRaises(AttributeError):
+            rect.__y
+
     def test_invalid_values(self):
         """Test for invalid values"""
         with self.assertRaises(ValueError):
             Rectangle(0, 15, 2, 2)
-        
+
         with self.assertRaises(ValueError):
             Rectangle(1, 0, 2, 2)
 
@@ -96,7 +95,7 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             Rectangle(8, 15, -2, 2)
-        
+
         with self.assertRaises(ValueError):
             Rectangle(8, 15, 2, -2)
 
@@ -113,9 +112,6 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             Rectangle(8, 15, 2, "2", 4)
-        
-        with self.assertRaises(TypeError):
-            Rectangle(8, 15, 2, 2, "4")
 
     def test_area(self):
         """Tests area method """

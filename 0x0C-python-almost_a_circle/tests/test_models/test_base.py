@@ -9,6 +9,7 @@ from models.rectangle import Rectangle
 from io import StringIO
 from unittest.mock import patch
 
+
 class TestBase(unittest.TestCase):
     """Tests the Base class functionalities"""
     def setUp(self):
@@ -52,7 +53,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(instance_2.id, 10)
         self.assertEqual(instance_3.id, 2)
         self.assertEqual(instance_4.id, 20)
-    
+
     def test_string_id(self):
         """ Test string id """
         new = Base('7')
