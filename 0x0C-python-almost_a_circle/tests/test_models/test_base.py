@@ -52,6 +52,11 @@ class TestBase(unittest.TestCase):
         self.assertEqual(instance_2.id, 10)
         self.assertEqual(instance_3.id, 2)
         self.assertEqual(instance_4.id, 20)
+    
+    def test_string_id(self):
+        """ Test string id """
+        new = Base('7')
+        self.assertEqual(new.id, '7')
 
     def test_multiple_id_arguments(self):
         """Test cases of multiple arguments"""
