@@ -127,16 +127,16 @@ class TestRectangle(unittest.TestCase):
         rect = Rectangle(3, 3)
         self.assertEqual(rect.area(), 9)
         rect.width = 5
-        self.assertEqual(new.area(), 15)
-        new.height = 5
-        self.assertEqual(new.area(), 25)
+        self.assertEqual(rect.area(), 15)
+        rect.height = 5
+        self.assertEqual(rect.area(), 25)
 
     def test_area_3(self):
         """Tests area method """
-        new = Rectangle(3, 8)
-        self.assertEqual(new.area(), 24)
-        new2 = Rectangle(10, 10)
-        self.assertEqual(new2.area(), 100)
+        rect = Rectangle(3, 8)
+        self.assertEqual(rect.area(), 24)
+        rect2 = Rectangle(10, 10)
+        self.assertEqual(rect2.area(), 100)
 
     def test_display(self):
         """ Test string printed """
