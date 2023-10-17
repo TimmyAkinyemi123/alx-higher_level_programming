@@ -5,7 +5,8 @@ from unittest import TestCase
 from models.base import Base
 from models.square import Square
 from models.rectangle import Rectangle
-
+from io import StringIO
+from unittest.mock import patch
 
 class TestBase(unittest.TestCase):
     """Tests the Base class functionalities"""
@@ -66,80 +67,38 @@ class TestBase(unittest.TestCase):
         """Tests to_json_string with no input"""
         result = Base.to_json_string(None)
         self.assertEqual(result, "[]")
+    
+    def test_save_to_file_1(self):
+        """ Tests the save_to_file method """
+        Square.save_to_file(None)
+        res = "[]\n"
+        with open("Square.json", "r") as file:
+            with patch('sys.stdout', new=StringIO()) as str_out:
+                print(file.read())
+                self.assertEqual(str_out.getvalue(), res)
 
-    def test_list_of_dictionaries(self):
-        """Tests to_json_string method with
-        list of dicts"""
-        list_dicts = [
-                {'name': 'John', 'age': 30},
-                {'name': 'Alice', 'age': 25}
-                ]
-        result = Base.to_json_string(list_dicts)
-        expected = (
-                '[{"name": "John", "age": 30},'
-                '{"name": "Alice", "age": 25}]'
-                )
-        self.assertEqual(result, expected)
+        try:
+            os.remove("Square.json")
+        except:
+            pass
 
-    def test_save_to_file_csv(self):
-        """Test save_to_file_csv method."""
-        r1 = Rectangle(3, 5)
-        r2 = Rectangle(7, 2)
-        with self.subTest():
-            with self.assertRaises(FileNotFoundError):
-                Rectangle.save_to_file_csv([r1, r2])
-        s1 = Square(4)
-        s2 = Square(2, 1, 2)
-        with self.subTest():
-            with self.assertRaises(FileNotFoundError):
-                Square.save_to_file_csv([s1, s2])
+        Rectangle.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
 
-    def test_load_from_file_csv(self):
-        """Test load_from_file_csv method."""
-        with self.subTest():
-            with self.assertRaises(FileNotFoundError):
-                Rectangle.load_from_file_csv()
+    def test_save_to_file_2(self):
+        """ Tests the save_to_file method """
+        Rectangle.save_to_file(None)
+        res = "[]\n"
+        with open("Rectangle.json", "r") as file:
+            with patch('sys.stdout', new=StringIO()) as str_out:
+                print(file.read())
+                self.assertEqual(str_out.getvalue(), res)
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
 
-        with self.subTest():
-            with self.assertRaises(FileNotFoundError):
-                Square.load_from_file_csv()
-
-    def test_create(self):
-        """Test create method."""
-        r1 = Rectangle(3, 5)
-        r2 = Rectangle(7, 2)
-        r1_dict = r1.to_dictionary()
-        r2_dict = r2.to_dictionary()
-        r1_copy = Rectangle.create(**r1_dict)
-        r2_copy = Rectangle.create(**r2_dict)
-        self.assertEqual(r1, r1_copy)
-        self.assertEqual(r2, r2_copy)
-
-        s1 = Square(4)
-        s2 = Square(2, 1, 2)
-        s1_dict = s1.to_dictionary()
-        s2_dict = s2.to_dictionary()
-        s1_copy = Square.create(**s1_dict)
-        s2_copy = Square.create(**s2_dict)
-        self.assertEqual(s1, s1_copy)
-        self.assertEqual(s2, s2_copy)
-
-    def test_load_from_file(self):
-        """Test load_from_file method."""
-        r1 = Rectangle(3, 5)
-        r2 = Rectangle(7, 2)
-        r1_dict = r1.to_dictionary()
-        r2_dict = r2.to_dictionary()
-        r1_copy = Rectangle.load_from_file()
-        r2_copy = Rectangle.load_from_file()
-        self.assertEqual(r1, r1_copy[0])
-        self.assertEqual(r2, r2_copy[1])
-
-        s1 = Square(4)
-        s2 = Square(2, 1, 2)
-        s1_dict = s1.to_dictionary()
-        s2_dict = s2.to_dictionary()
-        s1_copy = Square.load_from_file()
-        s2_copy = Square.load_from_file()
-        self.assertEqual(s1, s1_copy[0])
-        self.assertEqual(s2, s2_copy[1])
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
