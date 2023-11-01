@@ -2,7 +2,8 @@
 # 0-add_integer.py
 
 def add_integer(a, b=98):
-    """Adds 2 integers
+    """
+    Adds 2 integers
     a and b must be first casted to integers if they are float.
 
     Raises:
