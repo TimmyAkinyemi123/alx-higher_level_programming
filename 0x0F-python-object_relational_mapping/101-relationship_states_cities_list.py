@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Creates the State "California" with the City "San Francisco" from the
-database hbtn_0e_100_usa: (100-relationship_states_cities.py)"""
+"""Lists all State objects, and corresponding City
+objects, contained in the database hbtn_0e_101_usa"""
 
 import sys
 from unicodedata import name
@@ -16,6 +16,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     session_maker = sessionmaker(bind=engine)
     session = session_maker()
-    session.add(City(name="San Francisco", state=State(name="California")))
-    session.commit()
+    for state in session.query(State).order_by(State.id).all():
+        print("{}: {}".format(state.id, state.name))
+        for city in state.cities:
+            print("\t{}: {}".format(city.id, city.name))
     session.close()
+    engine.dispose()
