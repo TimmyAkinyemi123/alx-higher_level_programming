@@ -1,19 +1,19 @@
 #!/usr/bin/python3
-"""Defines a state model that contain the class definition
-of a City and an instance Base = declarative_base()"""
-from lib2to3.pytree import Base
-from sre_parse import State
-from unicodedata import name
-from sqlalchemy import Column, ForeignKey, Integer, String, null
+"""This defines the module for City class."""
+from sqlalchemy import Column, Integer, String, ForeignKey
+from relationship_state import Base
 from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
 
 
 class City(Base):
-    """Inherits from Base (imported from model_state)
-    links to the MySQL table cities"""
-    __tablename__ = "cities"
-    id = Column(Integer, primary_key=True)
+    """
+    City class inherits from Base.
+    Represents a city.
+    """
+    __tablename__ = 'cities'
+    id = Column(
+            Integer, primary_key=True, nullable=False, unique=True
+            )
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
+    state_id = Column(Integer, ForeignKey(
+        'states.id'), nullable=False)
