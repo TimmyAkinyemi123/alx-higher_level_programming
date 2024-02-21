@@ -1,29 +1,16 @@
 #!/usr/bin/node
 const request = require('request');
-
-if (process.argv.length !== 3) {
-  console.error('Usage: ./6-completed_tasks.js <api_url>');
-  process.exit(1);
-}
-
-const apiUrl = process.argv[2];
-
-request(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error(error.message);
-  } else if (response.statusCode === 200) {
+request(process.argv[2], function (error, response, body) {
+  if (!error) {
     const todos = JSON.parse(body);
-    const completedTasksByUser = {};
-
+    const completed = {};
     todos.forEach((todo) => {
-      if (todo.completed) {
-        const userId = todo.userId.toString();
-        completedTasksByUser[userId] = (completedTasksByUser[userId] || 0) + 1;
+      if (todo.completed && completed[todo.userId] === undefined) {
+        completed[todo.userId] = 1;
+      } else if (todo.completed) {
+        completed[todo.userId] += 1;
       }
     });
-
-    console.log(completedTasksByUser);
-  } else {
-    console.error(`Failed to retrieve data. Status code: ${response.statusCode}`);
+    console.log(completed);
   }
 });
